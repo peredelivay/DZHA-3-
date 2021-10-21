@@ -1,0 +1,21 @@
+#include <iostream>
+#include <windows.h>
+
+using namespace std;
+
+void proverka(double& a) {
+	while (!(cin >> a) || cin.get() != '\n') {
+		cin.clear();
+		cin.ignore(427938472389, '\n');
+		cout << "Введите числовое значение переменной: '\t'";
+	}
+}
+
+
+
+void main() {
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	cout << "Задача Ссуда'\n'";
+	cout << 
+}
