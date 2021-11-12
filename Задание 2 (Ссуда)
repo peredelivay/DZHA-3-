@@ -6,16 +6,85 @@ using namespace std;
 void proverka(double& a) {
 	while (!(cin >> a) || cin.get() != '\n') {
 		cin.clear();
-		cin.ignore(427938472389, '\n');
-		cout << "Введите числовое значение переменной: '\t'";
+		cin.ignore(1241988410, '\n');
+		cout << "Введите числовое значение переменной: \t";
 	}
 }
 
+void zaem();
+void ssuda();
 
 
-void main() {
+int main()
+{
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
-	cout << "Задача Ссуда'\n'";
-	cout << 
+	cout << "Задача \"Заём\". \n \n";
+	zaem();
+	cout << "Задача \"Ссуда\". \n \n";
+	ssuda();
+}
+void zaem() {
+	cout << "Введите в программу значения переменных, чтобы узнать месячную выплату:\n";
+	double S, n, p, m;
+	cout << "Введите процент, под который взят займ:\t";
+	proverka(p);
+	while (p < 0 or p > 100) {
+		cin.clear();
+		cout << "Введите корректное значение переменной: ";
+		proverka(p);
+	}
+	cout << "Введите количесвто лет:\t";
+	proverka(n);
+	while (n <= 0) {
+		cin.clear();
+		cout << "Введите корректное значение переменной: ";
+		proverka(n);
+	}
+	cout << "Введите занимаемую сумму: \t";
+	proverka(S);
+	while (S <= 0) {
+		cin.clear();
+		cout << "Введите корректное значение переменной: ";
+		proverka(S);
+	}
+	cout << "Месячная выплата = " << (m = (S * p / 100) * pow(1 + p / 100, n)) / (12 * (pow(1 + p / 100, n) - 1)) << "\n\n";
+}
+
+void ssuda(){
+	double S, n, r, p, m;
+	cout << "Введите занимаемую сумму: \t";
+	proverka(S);
+	while (S <= 0) {
+		cin.clear();
+		cout << "Введите корректное значение переменной: ";
+		proverka(S);
+	}
+	cout << "Введите количесвто лет:\t";
+	proverka(n);
+	while (n <= 0) {
+		cin.clear();
+		cout << "Введите корректное значение переменной: ";
+		proverka(n);
+	}
+	cout << "Введите значение одной месячной выплаты: \t";
+	proverka(m);
+	while (m <= 0) {
+		cin.clear();
+		cout << "Введите корректное значение переменной: ";
+		proverka(m);
+	}
+	for (p = 0; p <= 10000; p += 0.01)
+	{
+		r = p / 100;
+		if (abs((m - ((S * r * pow(1 + r, n)) / (12 * (pow(1 + r, n) - 1))))) < 0.01)
+		{
+			cout << "\tПроцент : " << p << "%" << endl;
+			break;
+		}
+		else {
+			cout << "Нельзя посчитать ссуду, некорректные данные" << endl;
+			break;
+		}
+	}
 }
