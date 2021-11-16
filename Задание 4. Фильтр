@@ -49,7 +49,7 @@ void main() {
                 b += symb[i];
             }
 
-            else if (!isdigit((unsigned char)symb[i]) && b != "") {
+            else if (b != "") {
                 cout << stoi(b) << endl;
                 b = "";
             }
